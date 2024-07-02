@@ -3,6 +3,17 @@ import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
+  const [photos, setPhotos] = React.useState({ text: 'hy'});
+  React.useEffect(() => {
+    fetch('http://localhost:5000/')
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+        setPhotos(data);
+      });
+  }, []);
   return (
     <div className="App">
       <header className="App-header">
@@ -16,7 +27,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          {photos?.text ?? "Learn React"}
         </a>
       </header>
     </div>

@@ -16,5 +16,7 @@ COPY . .
 # Compiles the application.
 RUN yarn build
 
+EXPOSE 5000
+
 # Specifies the command to start the express app. We're running the built application using Node.js directly instead of using Yarn or Nodemon to avoid issues with signal handling.
 CMD ["node", "dist/index.js"]

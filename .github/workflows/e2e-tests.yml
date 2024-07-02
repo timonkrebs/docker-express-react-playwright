@@ -63,3 +63,14 @@ jobs:
         with:
           name: E2E Test Report
           path: e2e/e2e-report
+
+      # Remove the Docker image for E2E tests.
+      - name: Remove E2E Docker image
+        if: always() # Ensure logs are captured, even if the tests fail.
+        working-directory: e2e
+        run: docker rm playwright-tests
+
+      # Build and start the "express-app" and "react-app" containers in detached mode to avoid blocking the workflow.
+      - name: Tear Down local environment with Docker Compose
+        if: always() # Ensure logs are captured, even if the tests fail.
+        run: docker compose down --rmi local
