@@ -41,6 +41,12 @@ To run the end-to-end tests:
 docker run --name playwright-tests --network=host playwright-tests yarn e2etest:ci
 ```
 
+### Or run action locally with act:
+https://nektosact.com/introduction.html
+```bash
+act pull_request
+```
+
 ## Further Reading
 
 For a detailed guide on how this setup works and how to integrate it into your own projects, check my blog post [Elevate Your CI/CD: Dockerized E2E Tests with GitHub Actions](https://lachiejames.com/elevate-your-ci-cd-dockerized-e2e-tests-with-github-actions/). The post explains each step of the process and provides additional context and explanation.
