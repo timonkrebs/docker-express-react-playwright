@@ -13,8 +13,9 @@ const corsOptions = {
  app.use(cors(corsOptions));
 
 app.get("/", (req, res) => {
+  // https://node.testcontainers.org/modules/mysql/
   res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify({ text: "Hello, TypeScript Express!" }, null, 3));
+    res.end(JSON.stringify({ text: "Hello, TypeScript Express!" }, null, 3));  
 });
 
 app.listen(port, () => {
