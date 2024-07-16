@@ -15,7 +15,7 @@ const config: PlaywrightTestConfig = {
   // Use three workers to run tests.
   workers: 3,
   // Limit the execution time of each test to 60,000 ms.
-  timeout: 6000,
+  timeout: 60000,
   // Set the configuration used by every test.
   use: {
     // In a CI environment, run tests in headless mode. Otherwise, show the browser UI.

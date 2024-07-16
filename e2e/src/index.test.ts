@@ -15,18 +15,16 @@ test('should display "Hello, TypeScript Express!" text on page', async ({ page }
     .withUsername(username)
     .withUserPassword(password)
     .withDatabase(database)
+    .withExposedPorts(3306)
     .start();
 
-
-  console.log(container.getConnectionUri(), 
-  `mysql://${username}:${password}@${container.getHost()}:${container.getPort()}/${database}`, 
-  "host:", container.getHost(),
-    "port:", container.getPort(),
-    "database:", container.getDatabase(),
-    "user:", container.getUsername(),
-    "password:", container.getUserPassword(),)
-
-
+    console.log(container.getConnectionUri(), 
+    `mysql://${username}:${password}@${container.getHost()}:${container.getPort()}/${database}`, 
+    "host:", container.getHost(),
+      "port:", container.getPort(),
+      "database:", container.getDatabase(),
+      "user:", container.getUsername(),
+      "password:", container.getUserPassword(),)
   // Navigate to localhost:3000/ (baseUrl from playwright.config.ts).
   await page.goto("/");
   // Wait for the text "Hello, TypeScript Express!" to appear on the page.
