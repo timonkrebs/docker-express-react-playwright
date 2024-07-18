@@ -3,6 +3,18 @@ version: "3"
 
 # Describes the services to be created.
 services:
+  # (this is just an example, not intended to be a production configuration)
+  db:
+      container_name: mysql
+      image: mysql
+      restart: always
+      environment:
+        MYSQL_ROOT_PASSWORD: my-secret-pw
+      networks:
+        - my-network
+      ports:
+        - "3306:3306"
+        - "8080:8080"
   # Defines the first service, express-app.
   express-app:
     # Sets a custom container name. This is useful for easy identification of running containers.
@@ -10,6 +22,15 @@ services:
     # Specifies the build context directory and Dockerfile location.
     build:
       context: ./express-app
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_USER=root
+      - DB_PASS=my-secret-pw
+    networks:
+      - my-network
     # Maps port 5000 of the container to port 5000 on the host machine.
     ports:
       - 5000:5000
@@ -24,3 +45,6 @@ services:
     # Maps port 3000 of the container to port 3000 on the host machine.
     ports:
       - 3000:3000
+
+networks:
+  my-network:

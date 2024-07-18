@@ -44,7 +44,7 @@ docker run --name playwright-tests --network=host playwright-tests yarn e2etest:
 ### Or run action locally with act:
 https://nektosact.com/introduction.html
 ```bash
-act pull_request
+act pull_request --artifact-server-path C:/tmp/artifacts
 ```
 
 ## Further Reading

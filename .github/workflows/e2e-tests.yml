@@ -20,7 +20,7 @@ jobs:
     steps:
       # Checkout the this repository.
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Build and start the "express-app" and "react-app" containers in detached mode to avoid blocking the workflow.
       - name: Start local environment with Docker Compose
@@ -53,7 +53,7 @@ jobs:
       # Upload the logs for all containers as an artifact.
       - name: Upload container logs
         if: always() # Ensure logs are captured, even if the tests fail.
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: E2E Logs
           path: logs
@@ -61,7 +61,7 @@ jobs:
       # Upload the test report and video recordings as an artifact.
       - name: Upload Test Report
         if: always() # Ensure test report is captured, even if the tests fail.
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: E2E Test Report
           path: e2e/e2e-report
